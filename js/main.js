@@ -1,3 +1,4 @@
+//* Create var to hold deck id for browser storage */
 let deckId = "";
 
 fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
@@ -23,11 +24,15 @@ function drawTwo() {
   .then((data) => {
     console.log(data);
 
+    //* Shows card image for each player
     document.getElementById("p1").src = data.cards[0].image
     document.getElementById("p2").src = data.cards[1].image
 
+    //** Callback function for converting face cards */
     let player1Val = convertToNum(data.cards[0].value)
     let player2Val = convertToNum(data.cards[1].value)
+
+    //* Shows results */
     if(player1Val > player2Val) {
       document.querySelector("h3").innerText = "Player 1 wins!"
     } else if (player1Val < player2Val) {
@@ -47,7 +52,7 @@ function drawTwo() {
   convertToNum()
 }
 
-/**Converts face cards to number value */
+//**Converts face cards to number value */
 function convertToNum(val) {
   if(val === "ACE") {
     return 14
