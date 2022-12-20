@@ -24,6 +24,16 @@ function drawTwo() {
   .then((data) => {
     console.log(data);
 
+    document.querySelector(".card-result").style.display = "flex";
+    document.querySelector(".card-result").style.margin = "40rem 0";
+    document.querySelector(".card-result").style.justifyContent = "space-between";
+    const playerTitles = document.getElementsByClassName("playerTitle");
+    for (let i = 0; i < playerTitles.length; i++) {
+      const playerTitle = playerTitles[i];
+      playerTitle.classList.add('marginBlockRemove');
+    }
+
+
     //* Shows card image for each player
     document.getElementById("p1").src = data.cards[0].image
     document.getElementById("p2").src = data.cards[1].image
@@ -66,3 +76,10 @@ function convertToNum(val) {
     return Number(val)
   }
 }
+
+//** Changes layout of player titles */
+// function playerTitles () {
+//   document.querySelector(p).style.display = "flex";
+//   document.querySelector(p).style.margin = "20rem 0";
+//   document.querySelector(p).style.justifyContent = "space-between";
+// }
